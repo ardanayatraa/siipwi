@@ -144,7 +144,7 @@
         </nav>
 
         <aside id="logo-sidebar"
-            class="fixed top-0 left-0  z-50 w-64 h-screen transition-transform transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 "
+            class="fixed top-0 left-0  shadow-lg z-50 w-64 h-screen transition-transform transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 "
             aria-label="Sidebar">
             <div class="h-full text-center px-3 pb-4 overflow-y-auto bg-white ">
                 <a href="#" class="flex justify-center items-center pt-8">
