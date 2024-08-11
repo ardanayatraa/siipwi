@@ -15,7 +15,8 @@
                     Total clients
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    {{ $orderCount }}
+                    {{-- {{ $orderCount }} --}}
+                    30
                 </p>
             </div>
         </div>
@@ -30,10 +31,10 @@
             </div>
             <div>
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                    Account balance
+                    Total Keuntungan
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    $ 46,760.89
+                    Rp. 3.000.000
                 </p>
             </div>
         </div>
@@ -48,7 +49,7 @@
             </div>
             <div>
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                    New sales
+                    Produk Terjual
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                     376
@@ -66,10 +67,10 @@
             </div>
             <div>
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                    Pending contacts
+                    Hari Ini
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    35
+                    Rp.100.000
                 </p>
             </div>
         </div>
