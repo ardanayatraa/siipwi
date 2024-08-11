@@ -19,6 +19,7 @@ class Transaction extends Model
         'amount',
         'provider_id',
         'product_id',
+        'category_id',
         'status',
         'total_price',
     ];

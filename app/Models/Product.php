@@ -20,7 +20,9 @@ class Product extends Model
         'base_price',
         'selling_price',
         'stock',
+        'code',
         'status',
+        'stock_id',
     ];
 
     protected static function boot()

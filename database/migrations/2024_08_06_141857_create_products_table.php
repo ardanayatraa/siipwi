@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->decimal('base_price', 10, 2);
             $table->decimal('selling_price', 10, 2);
-            $table->integer('stock');
-            $table->string('status')->default('pending');
+            $table->string('status');
             $table->timestamps();
         });
 
