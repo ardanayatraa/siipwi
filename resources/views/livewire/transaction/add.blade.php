@@ -12,7 +12,7 @@
 
         <x-slot name="content">
             <!-- Transaction Code -->
-            <div class="mt-4">
+            <div class="mt-4 hidden">
                 <x-label for="transaction_code" value="Transaction Code" />
                 <x-input id="transaction_code" type="text" class="mt-1 block w-full" wire:model.defer="transaction_code"
                     readonly />
@@ -127,14 +127,45 @@
             </div>
 
             <!-- Total Price -->
-            <div class="mt-4">
+            <div x-data="{ totalPrice: @entangle('total_price') }" class="mt-4">
                 <x-label for="total_price" value="Total Price" />
-                <x-input id="total_price" type="number" class="mt-1 block w-full" wire:model.defer="total_price" />
+                <x-input id="total_price" type="number" class="mt-1 block w-full" x-model="totalPrice" />
                 @error('total_price')
                     <span class="text-red-500">{{ $message }}</span>
                 @enderror
-            </div>
 
+                <div class="flex space-x-2 mt-2">
+                    <button type="button" @click="totalPrice = 7000"
+                        class="px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        7K
+                    </button>
+                    <button type="button" @click="totalPrice = 12000"
+                        class="px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        12K
+                    </button>
+                    <button type="button" @click="totalPrice = 17000"
+                        class="px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        17K
+                    </button>
+                    <button type="button" @click="totalPrice = 22000"
+                        class="px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        22K
+                    </button>
+                    <button type="button" @click="totalPrice = 27000"
+                        class="px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        27K
+                    </button>
+                    <button type="button" @click="totalPrice = 52000"
+                        class="px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        52K
+                    </button>
+                    <button type="button" @click="totalPrice = 102000"
+                        class="px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        102K
+                    </button>
+                </div>
+            </div>
+            
             <!-- Status -->
             <div class="mt-4">
                 <x-label for="status" value="Status" />

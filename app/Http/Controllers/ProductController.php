@@ -85,4 +85,7 @@ class ProductController extends Controller
     public function stock(){
         return view('menu.stock.add');
     }
+    public function panduan(){
+        return view('menu.stock.panduan');
+    }
 }

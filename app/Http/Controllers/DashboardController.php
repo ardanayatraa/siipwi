@@ -8,10 +8,31 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index(MonthlyOrderChart $chart){
+    public function index(MonthlyOrderChart $chart)
+    {
+        $clientCount = Transaction::distinct('phone_number')->count('phone_number');
+        $orderCount = Transaction::count();
 
-        $orderCount = Transaction::all()->unique('phone_number')->count();
+        $keuntungan = Transaction::all()->sum(function ($transaction) {
+            return $transaction->total_price - $transaction->amount;
+        });
 
-         return view('dashboard', ['chart' => $chart->build(),'orderCount'=>$orderCount]);
+        $keuntunganHariIni = Transaction::whereDate('created_at', now()->toDateString())
+        ->get()
+        ->sum(function ($transaction) {
+            return $transaction->total_price - $transaction->amount;
+        });
+
+        // Number of orders today
+        $ordersHariIni = Transaction::whereDate('created_at', now()->toDateString())->count();
+
+        return view('dashboard', [
+            'chart' => $chart->build(),
+            'clientCount' => $clientCount,
+            'untung' => $keuntungan,
+            'orderCount' => $orderCount,
+            'keuntunganHariIni' => $keuntunganHariIni,
+            'ordersHariIni' => $ordersHariIni, // Pass this to the view
+        ]);
     }
 }

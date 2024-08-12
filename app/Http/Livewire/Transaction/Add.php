@@ -95,6 +95,7 @@ class Add extends Component
 
         $this->product_id = $product->id;
         $this->product_name = $product->name;
+        $this->amount = $product->base_price;
         $this->provider_id = $product->provider->id;
         $this->provider_name = $product->provider->name;
         $this->category_id = $product->category->id;
@@ -108,11 +109,17 @@ class Add extends Component
         if ($this->provider_id && $this->product_id) {
             $date = now()->format('dmy');
             $providerCode = substr($this->provider_name, 0, 3);
-            $uniqueCode = str_pad(rand(0, 999), 3, '0', STR_PAD_LEFT);
+
+            // Hitung jumlah transaksi untuk hari ini
+            $orderCount = Transaction::whereDate('created_at', now()->format('Y-m-d'))->count() + 1;
+
+            // Format order number menjadi tiga digit
+            $uniqueCode = str_pad($orderCount, 3, '0', STR_PAD_LEFT);
 
             $this->transaction_code = "INV{$date}{$providerCode}{$uniqueCode}";
         }
     }
+
 
     public function add()
     {

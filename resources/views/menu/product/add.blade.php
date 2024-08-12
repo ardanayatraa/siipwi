@@ -1,10 +1,8 @@
 <x-app-layout>
-    @livewire('product.add')
-    @livewire('stock.add')
-    @livewire('stock.import')
-    <livewire:product-generator />
+    <div class="flex gap-1">
+        @livewire('product.add')
+        <livewire:product-generator />
+    </div>
+    <br>
     @livewire('table.product-table')
-    @livewire('table.stock-table')
-
-
 </x-app-layout>
