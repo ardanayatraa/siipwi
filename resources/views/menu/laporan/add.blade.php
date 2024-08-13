@@ -67,5 +67,11 @@
             document.querySelectorAll('#filters > .filter-section').forEach(div => div.classList.add('hidden'));
             document.getElementById(`${type}-filter`).classList.remove('hidden');
         }
+
+        // Initialize the form with the default type
+        document.addEventListener('DOMContentLoaded', () => {
+            const reportTypeSelect = document.getElementById('reportType');
+            updateFormAction(reportTypeSelect); // Set initial state based on default value
+        });
     </script>
 </x-app-layout>

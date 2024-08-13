@@ -19,7 +19,9 @@ class ProductCategoryTable extends LivewireDatatable
         return [
             Column::name('name')
                 ->label('Category Name'),
-
+                Column::callback(['id'], function ($id) {
+                    return view('components.menu.category.edit-link-category', ['category' => $id]);
+                 })
         ];
     }
 }

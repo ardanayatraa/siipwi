@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Table;
 
 use App\Models\Transaction;
 use Mediconesystems\LivewireDatatables\Column;
+use Mediconesystems\LivewireDatatables\DateColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
 class TransactionTable extends LivewireDatatable
@@ -26,7 +27,11 @@ class TransactionTable extends LivewireDatatable
                 ->label('Total Price'),
             Column::name('status')
                 ->label('Status'),
-
+            DateColumn::name('created_at')
+                ->label('Order At'),
+                Column::callback(['id'], function ($id) {
+                    return view('components.menu.transaction.edit-link-transaction', ['transaction' => $id]);
+                 })
         ];
     }
 }

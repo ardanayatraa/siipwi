@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -56,8 +57,11 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+
+
+            $order = Transaction::findOrFail($id);
+            return view('menu.order.edit', compact('order'));
+        }
 
     /**
      * Update the specified resource in storage.

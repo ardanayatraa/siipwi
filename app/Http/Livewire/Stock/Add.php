@@ -14,6 +14,7 @@ class Add extends Component
     public $harga;
     public $status;
     public $isOpen = false;
+    public $isResetModalOpen = false;
 
     protected $rules = [
         'category' => 'required|string|max:255',
@@ -33,6 +34,16 @@ class Add extends Component
         $this->isOpen = false;
     }
 
+    public function openResetModal()
+    {
+        $this->isResetModalOpen = true;
+    }
+
+    public function closeResetModal()
+    {
+        $this->isResetModalOpen = false;
+    }
+
     public function add()
     {
         $this->validate();
@@ -47,7 +58,14 @@ class Add extends Component
         ]);
 
         $this->reset(['category', 'kode', 'keterangan', 'harga', 'status', 'isOpen']);
+        return redirect()->route('stock.index');
+    }
 
+    public function resetStock()
+    {
+        Stock::truncate(); // Menghapus semua data stock
+        $this->closeResetModal();
+        session()->flash('message', 'All stocks have been reset!');
         return redirect()->route('stock.index');
     }
 

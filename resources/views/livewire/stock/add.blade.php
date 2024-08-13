@@ -3,6 +3,11 @@
         Add Stock
     </x-button>
 
+    <x-button wire:click="openResetModal" class="ml-4 bg-red-600 hover:bg-red-700">
+        Reset Stock
+    </x-button>
+
+    <!-- Modal untuk Menambah Stock -->
     <x-dialog-modal wire:model="isOpen">
         <x-slot name="title">
             Add Stock
@@ -57,6 +62,27 @@
 
             <x-button class="ml-2" wire:click="add">
                 Save
+            </x-button>
+        </x-slot>
+    </x-dialog-modal>
+
+    <!-- Modal Konfirmasi Reset Stock -->
+    <x-dialog-modal wire:model="isResetModalOpen">
+        <x-slot name="title">
+            Confirm Reset
+        </x-slot>
+
+        <x-slot name="content">
+            Are you sure you want to reset all stock data? This action cannot be undone.
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-secondary-button wire:click="closeResetModal">
+                Cancel
+            </x-secondary-button>
+
+            <x-button class="ml-2 bg-red-600 hover:bg-red-700" wire:click="resetStock">
+                Reset
             </x-button>
         </x-slot>
     </x-dialog-modal>

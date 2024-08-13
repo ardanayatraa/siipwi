@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 
 class ProductCategoryController extends Controller
@@ -56,8 +57,11 @@ class ProductCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+
+
+            $category = ProductCategory::findOrFail($id);
+            return view('menu.category.edit', compact('category'));
+        }
 
     /**
      * Update the specified resource in storage.

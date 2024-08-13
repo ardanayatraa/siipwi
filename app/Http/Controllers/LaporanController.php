@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Transaction;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -39,13 +40,27 @@ class LaporanController extends Controller
             abort(404, 'Report type not found.');
         }
 
+        // Ambil semua product_id dari transaksi
+        $productIds = $transactions->pluck('product_id')->unique();
+        // Ambil semua produk yang relevan
+        $products = Product::whereIn('id', $productIds)->get()->keyBy('id');
+
+        // Menghitung total profit
         $totalProfit = $transactions->sum(function ($transaction) {
             return $transaction->total_price - $transaction->amount;
         });
 
-        $pdf = $this->generatePdf('reports.' . $type, [
-            'transactions' => $transactions,
+        // Memproses data transaksi dan produk
+        $transactionsWithProducts = $transactions->map(function ($transaction) use ($products) {
+            $transaction->product = $products->get($transaction->product_id);
+            return $transaction;
+        });
+
+        // Membuat PDF
+        $pdf = $this->generatePdf('reports.report', [
+            'transactions' => $transactionsWithProducts,
             'totalProfit' => $totalProfit,
+            'type' => $type,
             'date' => $date,
             'month' => $month,
             'year' => $year,
@@ -53,9 +68,11 @@ class LaporanController extends Controller
             'endDate' => $endDate,
         ]);
 
+        // Simpan PDF ke dalam storage
         $pdfPath = 'public/reports/' . $filename . '.pdf';
         Storage::put($pdfPath, $pdf);
 
+        // Tampilkan preview laporan
         return view('reports.preview', ['pdfPath' => asset('storage/reports/' . $filename . '.pdf')]);
     }
 

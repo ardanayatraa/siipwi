@@ -33,7 +33,10 @@ Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index
 
 
 Route::get('/category', [ProductCategoryController::class, 'index'])->name('category.index');
+Route::get('/category/{category}', [ProductCategoryController::class, 'edit
+'])->name('category.edit');
 Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+Route::get('/order/{order}', [OrderController::class, 'edit'])->name('order.edit');
 
 
 

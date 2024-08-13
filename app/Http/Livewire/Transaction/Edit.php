@@ -8,8 +8,9 @@ use App\Models\Provider;
 use App\Models\Product;
 use App\Models\ProductCategory;
 
-class Add extends Component
+class Edit extends Component
 {
+    public $transaction_id;
     public $transaction_code;
     public $phone_number;
     public $amount;
@@ -19,9 +20,8 @@ class Add extends Component
     public $product_name;
     public $category_id;
     public $category_name;
-    public $status = 'SUCCESS';
+    public $status;
     public $total_price;
-    public $isOpen = false;
 
     public $providerQuery = '';
     public $categoryQuery = '';
@@ -37,14 +37,23 @@ class Add extends Component
         'total_price' => 'required|numeric|min:0',
     ];
 
-    public function openModal()
+    public function mount($transactionId)
     {
-        $this->isOpen = true;
-    }
+        $transaction = Transaction::find($transactionId);
+        $product = Product::find($transaction->product_id);
 
-    public function closeModal()
-    {
-        $this->isOpen = false;
+        $this->transaction_id = $transaction->id;
+        $this->transaction_code = $transaction->transaction_code;
+        $this->phone_number = $transaction->phone_number;
+        $this->amount = $transaction->amount;
+        $this->provider_id = $transaction->provider_id;
+        $this->provider_name = $transaction->provider->name;
+        $this->product_id = $product->id;
+        $this->product_name = $product->name;
+        $this->category_id = $transaction->category_id;
+        $this->category_name = $transaction->category->name;
+        $this->status = $transaction->status;
+        $this->total_price = $transaction->total_price;
     }
 
     public function filterProviders()
@@ -120,12 +129,12 @@ class Add extends Component
         }
     }
 
-
-    public function add()
+    public function update()
     {
         $this->validate();
 
-        Transaction::create([
+        $transaction = Transaction::find($this->transaction_id);
+        $transaction->update([
             'transaction_code' => $this->transaction_code,
             'phone_number' => $this->phone_number,
             'amount' => $this->amount,
@@ -136,18 +145,12 @@ class Add extends Component
             'total_price' => $this->total_price,
         ]);
 
-        $this->reset([
-            'transaction_code', 'phone_number', 'amount', 'provider_id', 'provider_name',
-            'product_id', 'product_name', 'category_id', 'category_name', 'status', 'total_price', 'isOpen',
-            'providerQuery', 'categoryQuery', 'productQuery'
-        ]);
-
-        session()->flash('message', 'Transaction added successfully.');
+        session()->flash('message', 'Transaction updated successfully.');
     }
 
     public function render()
     {
-        return view('livewire.transaction.add', [
+        return view('livewire.transaction.edit', [
             'providers' => $this->filterProviders(),
             'categories' => $this->filterCategories(),
             'products' => $this->filterProducts(),

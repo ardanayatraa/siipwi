@@ -27,7 +27,8 @@
                             <li><strong>Harga:</strong> Harga produk dalam format numerik.</li>
                             <li><strong>Status:</strong> Status produk, misalnya 'Aktif' atau 'Nonaktif'.</li>
                         </ul>
-                        <p class="mt-4">Unduh <a href="#"
+                        <p class="mt-4">Unduh <a
+                                href="https://docs.google.com/spreadsheets/d/1uMbi499xReJK5rD6vVRejI2XeMSVJ30uopbQ1R46de0/edit?usp=sharing"
                                 class="text-purple-600 hover:underline font-semibold">template contoh</a> untuk
                             memeriksa format yang benar.</p>
                         <img src="https://via.placeholder.com/600x400?text=Menyiapkan+File+Excel"

@@ -18,7 +18,7 @@
     </div>
 
     <br>
-    @livewire('table.stock-table')
 
 
+    <livewire:table.stock-table exportable />
 </x-app-layout>
