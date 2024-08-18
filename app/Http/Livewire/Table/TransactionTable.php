@@ -31,7 +31,7 @@ class TransactionTable extends LivewireDatatable
                 ->label('Order At'),
                 Column::callback(['id'], function ($id) {
                     return view('components.menu.transaction.edit-link-transaction', ['transaction' => $id]);
-                 })
+                 })->excludeFromExport()
         ];
     }
 }
