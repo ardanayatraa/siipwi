@@ -42,6 +42,7 @@ class ProductGenerator extends Component
         }
 
         session()->flash('message', 'Products generated successfully!');
+        return redirect()->route('product.index');
     }
 
     private function matchProvider($categoryName)
@@ -90,6 +91,11 @@ class ProductGenerator extends Component
             $category = ProductCategory::where('name', 'LIKE', '%Paket Nelpon%')->first();
             Log::info("Category 'Paket Nelpon' matched for '{$keterangan}'");
             return $category;
+        } elseif (preg_match('/wifi|hotspot/i', $keterangan)) {
+            // Mencari kategori yang mengandung 'Wifi'
+            $category = ProductCategory::where('name', 'LIKE', '%Wifi%')->first();
+            Log::info("Category 'Wifi' matched for '{$keterangan}'");
+            return $category;
         }
 
         Log::warning("No category matched for '{$keterangan}'");
@@ -97,10 +103,12 @@ class ProductGenerator extends Component
     }
 
 
+
     public function resetProducts()
     {
         Product::truncate();
         session()->flash('message', 'All products have been reset!');
+        return redirect()->route('product.index');
     }
 
     public function render()

@@ -154,7 +154,7 @@
 
                     <li class="relative px-6 py-3">
                         <span
-                            class="absolute inset-y-0 left-0 w-1  {{ request()->routeIs('dashboard') ? 'bg-purple-600 ' : '' }} rounded-tr-lg rounded-br-lg"
+                            class="absolute inset-y-0 left-0 w-1  {{ request()->routeIs('dashboard*') ? 'bg-purple-600 ' : '' }} rounded-tr-lg rounded-br-lg"
                             aria-hidden="true"></span>
                         <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800"
                             href="{{ route('dashboard') }}">
@@ -169,7 +169,7 @@
                     </li>
                     <li class="relative px-6 py-3  ">
                         <span
-                            class="absolute inset-y-0 left-0 w-1  {{ request()->routeIs('order.index') ? 'bg-purple-600 ' : '' }} rounded-tr-lg rounded-br-lg"
+                            class="absolute inset-y-0 left-0 w-1  {{ request()->routeIs('order*') ? 'bg-purple-600 ' : '' }} rounded-tr-lg rounded-br-lg"
                             aria-hidden="true"></span>
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 "
                             href="{{ route('order.index') }}">
@@ -187,7 +187,7 @@
 
                     <li class="relative px-6 py-3">
                         <span
-                            class="absolute inset-y-0 left-0 w-1  {{ request()->routeIs('product.index') ? 'bg-purple-600' : '' }} rounded-tr-lg rounded-br-lg"
+                            class="absolute inset-y-0 left-0 w-1  {{ request()->routeIs('product*') ? 'bg-purple-600' : '' }} rounded-tr-lg rounded-br-lg"
                             aria-hidden="true"></span>
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 "
                             href="{{ route('product.index') }}">
@@ -204,7 +204,7 @@
                     </li>
                     <li class="relative px-6 py-3">
                         <span
-                            class="absolute inset-y-0 left-0 w-1  {{ request()->routeIs('provider.index') ? 'bg-purple-600' : '' }} rounded-tr-lg rounded-br-lg"
+                            class="absolute inset-y-0 left-0 w-1  {{ request()->routeIs('provider*') ? 'bg-purple-600' : '' }} rounded-tr-lg rounded-br-lg"
                             aria-hidden="true"></span>
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 "
                             href="{{ route('provider.index') }}">
@@ -222,7 +222,7 @@
 
                     <li class="relative px-6 py-3">
                         <span
-                            class="absolute inset-y-0 left-0 w-1  {{ request()->routeIs('stock.index') ? 'bg-purple-600' : '' }} rounded-tr-lg rounded-br-lg"
+                            class="absolute inset-y-0 left-0 w-1  {{ request()->routeIs('stock*') ? 'bg-purple-600' : '' }} rounded-tr-lg rounded-br-lg"
                             aria-hidden="true"></span>
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 "
                             href="{{ route('stock.index') }}">
@@ -241,7 +241,7 @@
 
                     <li class="relative px-6 py-3">
                         <span
-                            class="absolute inset-y-0 left-0 w-1  {{ request()->routeIs('category.index') ? 'bg-purple-600' : '' }} rounded-tr-lg rounded-br-lg"
+                            class="absolute inset-y-0 left-0 w-1  {{ request()->routeIs('category*') ? 'bg-purple-600' : '' }} rounded-tr-lg rounded-br-lg"
                             aria-hidden="true"></span>
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 "
                             href="{{ route('category.index') }}">
@@ -259,7 +259,7 @@
                     </li>
                     <li class="relative px-6 py-3">
                         <span
-                            class="absolute inset-y-0 left-0 w-1  {{ request()->routeIs('laporan.index') ? 'bg-purple-600' : '' }} rounded-tr-lg rounded-br-lg"
+                            class="absolute inset-y-0 left-0 w-1  {{ request()->routeIs('laporan*') ? 'bg-purple-600' : '' }} rounded-tr-lg rounded-br-lg"
                             aria-hidden="true"></span>
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 "
                             href="{{ route('laporan.index') }}">

@@ -25,7 +25,6 @@ class Add extends Component
         'name' => 'required|string|max:255',
         'base_price' => 'required|numeric|min:0',
         'selling_price' => 'required|numeric|min:0',
-        'stock' => 'required|integer|min:0',
         'status' => 'required|string|max:255',
     ];
 
@@ -61,7 +60,6 @@ class Add extends Component
             'name' => $this->name,
             'base_price' => $this->base_price,
             'selling_price' => $this->selling_price,
-            'stock' => $this->stock,
             'status' => $this->status,
         ]);
 

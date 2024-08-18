@@ -27,7 +27,7 @@ Route::get('/provider/{provider}', [ProviderController::class, 'edit'])->name('p
 
 Route::get('/product', [ProductController::class, 'index'])->name('product.index');
 Route::get('/stock', [ProductController::class, 'stock'])->name('stock.index');
-Route::get('/stock/panduan', [ProductController::class, 'panduan'])->name('panduan.index');
+Route::get('/stock/panduan', [ProductController::class, 'panduan'])->name('stock.panduan');
 
 Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
 

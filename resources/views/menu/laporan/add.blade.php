@@ -1,8 +1,8 @@
 <x-app-layout>
     <h1 class="text-3xl font-bold mb-6 text-gray-800">Generate Report</h1>
 
-    <form action="{{ route('laporan.generate', ['type' => 'daily']) }}" method="GET"
-        class="bg-white shadow-md rounded-lg p-6 space-y-6" id="reportForm">
+    <form id="reportForm" action="{{ route('laporan.generate', ['type' => 'daily']) }}" method="GET"
+        class="bg-white shadow-md rounded-lg p-6 space-y-6">
         <div class="flex items-center mb-4">
             <label for="reportType" class="block text-lg font-medium text-gray-700 mr-4">Report Type:</label>
             <select id="reportType" name="type"
@@ -26,17 +26,12 @@
                 <label for="month" class="block text-gray-600 mb-1">Month:</label>
                 <input type="month" id="month" name="month"
                     class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
-                <label for="year" class="block text-gray-600 mt-4 mb-1">Year:</label>
-                <input type="number" id="year" name="year"
-                    class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
-                    min="2000" max="{{ date('Y') }}">
             </div>
 
             <div id="yearly-filter" class="filter-section hidden">
                 <label for="year" class="block text-gray-600 mb-1">Year:</label>
-                <input type="number" id="year" name="year"
-                    class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
-                    min="2000" max="{{ date('Y') }}">
+                <input type="number" id="year" name="year" min="2000" max="{{ date('Y') }}"
+                    class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
             </div>
 
             <div id="custom-filter" class="filter-section hidden">
@@ -59,19 +54,22 @@
             const type = select.value;
             const form = document.getElementById('reportForm');
             form.action = `{{ url('/laporan/generate') }}/${type}`;
-            toggleFilters(select);
+            toggleFilters(type);
         }
 
-        function toggleFilters(select) {
-            const type = select.value;
-            document.querySelectorAll('#filters > .filter-section').forEach(div => div.classList.add('hidden'));
-            document.getElementById(`${type}-filter`).classList.remove('hidden');
+        function toggleFilters(type) {
+            const sections = document.querySelectorAll('.filter-section');
+            sections.forEach(section => section.classList.add('hidden'));
+
+            const selectedFilter = document.getElementById(`${type}-filter`);
+            if (selectedFilter) {
+                selectedFilter.classList.remove('hidden');
+            }
         }
 
-        // Initialize the form with the default type
         document.addEventListener('DOMContentLoaded', () => {
             const reportTypeSelect = document.getElementById('reportType');
-            updateFormAction(reportTypeSelect); // Set initial state based on default value
+            updateFormAction(reportTypeSelect);
         });
     </script>
 </x-app-layout>

@@ -37,6 +37,7 @@ class Add extends Component
         $this->reset(['name', 'isOpen']);
 
         session()->flash('message', 'Product category added successfully.');
+        return redirect()->route('category.index');
     }
 
     public function render()

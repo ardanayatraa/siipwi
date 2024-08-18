@@ -142,7 +142,7 @@ class Add extends Component
             'providerQuery', 'categoryQuery', 'productQuery'
         ]);
 
-        session()->flash('message', 'Transaction added successfully.');
+        return redirect()->route('order.index');
     }
 
     public function render()

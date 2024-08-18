@@ -51,22 +51,23 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID Transaksi</th>
+
                     <th>Produk</th>
+                    <th>Pelanggan</th>
                     <th>Harga</th>
-                    <th>Jumlah</th>
-                    <th>Total Harga</th>
+
+
                     <th>Tanggal</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($transactions as $transaction)
                     <tr>
-                        <td>{{ $transaction->id }}</td>
+
                         <td>{{ $transaction->product->name ?? 'N/A' }}</td>
+                        <td>{{ $transaction->phone_number ?? 'N/A' }}</td>
                         <td>{{ number_format($transaction->total_price, 0, ',', '.') }}</td>
-                        <td>{{ number_format($transaction->amount, 0, ',', '.') }}</td>
-                        <td>{{ number_format($transaction->total_price * $transaction->amount, 0, ',', '.') }}</td>
+
                         <td>{{ $transaction->created_at->format('d-m-Y H:i:s') }}</td>
                     </tr>
                 @endforeach

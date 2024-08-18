@@ -146,6 +146,7 @@ class Edit extends Component
         ]);
 
         session()->flash('message', 'Transaction updated successfully.');
+        return redirect()->route('order.index');
     }
 
     public function render()

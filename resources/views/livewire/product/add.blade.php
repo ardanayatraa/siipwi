@@ -79,13 +79,6 @@
                 @enderror
             </div>
 
-            <div class="mt-4">
-                <x-label for="stock" value="Stock" />
-                <x-input id="stock" type="text" class="mt-1 block w-full" wire:model.defer="stock" />
-                @error('stock')
-                    <span class="text-red-500">{{ $message }}</span>
-                @enderror
-            </div>
 
             <div class="mt-4">
                 <x-label for="status" value="Status" />
