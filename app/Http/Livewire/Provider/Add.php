@@ -6,9 +6,11 @@ use Masmerise\Toaster\Toaster;
 use Livewire\Component;
 use App\Models\Provider;
 use Illuminate\Support\Str;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Add extends Component
 {
+    use LivewireAlert;
     public $name;
     public $provider;
     public $code;
@@ -42,7 +44,7 @@ class Add extends Component
         ]);
 
         $this->reset(['name', 'code', 'isOpen']);
-
+        $this->alert('success', 'Provider Added !');
         return redirect()->route('provider.index');
     }
 

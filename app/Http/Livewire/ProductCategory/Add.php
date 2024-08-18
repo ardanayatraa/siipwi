@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire\ProductCategory;
 
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use App\Models\ProductCategory;
 use Illuminate\Support\Str;
 
 class Add extends Component
 {
+    use LivewireAlert;
     public $name;
     public $isOpen = false;
 
@@ -36,7 +38,7 @@ class Add extends Component
 
         $this->reset(['name', 'isOpen']);
 
-        session()->flash('message', 'Product category added successfully.');
+        $this->alert('success', 'Product Category Added!');
         return redirect()->route('category.index');
     }
 

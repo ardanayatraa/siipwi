@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Transaction;
 
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use App\Models\Transaction;
 use App\Models\Provider;
@@ -10,6 +11,7 @@ use App\Models\ProductCategory;
 
 class Edit extends Component
 {
+    use LivewireAlert;
     public $transaction_id;
     public $transaction_code;
     public $phone_number;
@@ -145,7 +147,7 @@ class Edit extends Component
             'total_price' => $this->total_price,
         ]);
 
-        session()->flash('message', 'Transaction updated successfully.');
+        $this->alert('success', 'Order Updated !');
         return redirect()->route('order.index');
     }
 

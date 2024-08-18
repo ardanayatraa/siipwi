@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire\ProductCategory;
 
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use App\Models\ProductCategory;
 
 class Delete extends Component
 {
+    use LivewireAlert;
     public $categoryId;
     public $category;
     public $isOpen = false;
@@ -32,7 +34,7 @@ class Delete extends Component
         ProductCategory::find($this->categoryId)->delete();
 
         $this->reset(['categoryId', 'category', 'isOpen']);
-        session()->flash('message', 'Product category deleted successfully.');
+        $this->alert('success', 'Product Category Deleted !');
         return redirect()->route('category.index');
     }
 

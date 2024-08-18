@@ -5,10 +5,12 @@ namespace App\Http\Livewire\Provider;
 
 use Livewire\Component;
 use App\Models\Provider;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use MAS\Toaster\Toaster;
 
 class Delete extends Component
 {
+    use LivewireAlert;
     public $providerId;
     public $provider;
     public $isOpen = false;
@@ -35,6 +37,7 @@ class Delete extends Component
             ->delete();
 
         $this->reset(['providerId', 'provider', 'isOpen']);
+        $this->alert('success', 'Provider Deleted !');
          return redirect()->route('provider.index');
     }
 

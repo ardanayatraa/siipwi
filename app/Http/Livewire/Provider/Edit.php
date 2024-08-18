@@ -5,9 +5,11 @@ namespace App\Http\Livewire\Provider;
 use Livewire\Component;
 use App\Models\Provider;
 use Masmerise\Toaster\Toaster;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Edit extends Component
 {
+    use LivewireAlert;
     public $providerId;
     public $name;
     public $code;
@@ -33,7 +35,7 @@ class Edit extends Component
             'name' => $this->name,
             'code' => $this->code,
         ]);
-
+        $this->alert('success', 'Provider Updated !');
         return redirect()->route('provider.index');
     }
 

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Livewire\Product;
 
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Provider;
@@ -8,6 +9,7 @@ use App\Models\ProductCategory;
 
 class Add extends Component
 {
+    use LivewireAlert;
     public $provider_id;
     public $provider_name;
     public $category_id;
@@ -64,7 +66,7 @@ class Add extends Component
         ]);
 
         $this->reset(['provider_id', 'provider_name', 'category_id', 'category_name', 'name', 'base_price', 'selling_price', 'stock', 'status', 'isOpen']);
-
+        $this->alert('success', 'Product Added ! ');
            return redirect()->route('product.index');
     }
 

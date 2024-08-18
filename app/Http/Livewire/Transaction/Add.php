@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Transaction;
 
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use App\Models\Transaction;
 use App\Models\Provider;
@@ -10,6 +11,7 @@ use App\Models\ProductCategory;
 
 class Add extends Component
 {
+    use LivewireAlert;
     public $transaction_code;
     public $phone_number;
     public $amount;
@@ -141,7 +143,7 @@ class Add extends Component
             'product_id', 'product_name', 'category_id', 'category_name', 'status', 'total_price', 'isOpen',
             'providerQuery', 'categoryQuery', 'productQuery'
         ]);
-
+        $this->alert('success', 'Order Added !');
         return redirect()->route('order.index');
     }
 

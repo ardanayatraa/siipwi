@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire\Stock;
 
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use App\Models\Stock;
 use Illuminate\Support\Str;
 
 class Add extends Component
 {
+    use LivewireAlert;
     public $category;
     public $kode;
     public $keterangan;
@@ -58,6 +60,7 @@ class Add extends Component
         ]);
 
         $this->reset(['category', 'kode', 'keterangan', 'harga', 'status', 'isOpen']);
+        $this->alert('success', 'New Stock Added');
         return redirect()->route('stock.index');
     }
 
@@ -65,7 +68,7 @@ class Add extends Component
     {
         Stock::truncate(); // Menghapus semua data stock
         $this->closeResetModal();
-        session()->flash('message', 'All stocks have been reset!');
+        $this->alert('success', 'Success Reset Stock!');
         return redirect()->route('stock.index');
     }
 

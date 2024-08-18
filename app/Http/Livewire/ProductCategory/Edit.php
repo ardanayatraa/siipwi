@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire\ProductCategory;
 
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use App\Models\ProductCategory;
 
 class Edit extends Component
 {
+    use LivewireAlert;
     public $categoryId;
     public $name;
 
@@ -29,8 +31,7 @@ class Edit extends Component
         $category->update([
             'name' => $this->name,
         ]);
-
-        session()->flash('message', 'Product category updated successfully.');
+        $this->alert('success', 'Product Category Updated !');
         return redirect()->route('category.index');
     }
 

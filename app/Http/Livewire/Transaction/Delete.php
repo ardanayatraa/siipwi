@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire\Transaction;
 
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use App\Models\Transaction;
 
 class Delete extends Component
 {
+    use LivewireAlert;
     public $transactionId;
     public $isOpen = false;
 
@@ -38,6 +40,7 @@ class Delete extends Component
         session()->flash('message', 'Transaction deleted successfully.');
 
         $this->reset(['transactionId', 'isOpen']);
+        $this->alert('success', 'Order Deleted !');
         return redirect()->route('order.index');
     }
 

@@ -7,10 +7,11 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\StockImport;
 use Livewire\WithFileUploads;
 use App\Models\Stock;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Import extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads,LivewireAlert;
 
     public $file;
     public $isOpen = false;
@@ -54,6 +55,7 @@ class Import extends Component
         session()->flash('success', 'Stocks imported successfully.');
 
         $this->emit('refreshStockList'); // Optional: Emit event to refresh stock list if needed
+        $this->alert('success', 'Stock Imported !!');
         return redirect()->route('stock.index');
     }
 
