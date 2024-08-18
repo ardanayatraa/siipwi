@@ -18,7 +18,7 @@ class Add extends Component
     public $base_price;
     public $selling_price;
     public $stock;
-    public $status = 'pending';
+    public $status = 'OPEN';
     public $isOpen = false;
 
     protected $rules = [
